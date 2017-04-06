@@ -1,0 +1,17 @@
+service: lmstwfy
+
+provider:
+  name: aws
+  runtime: dotnetcore1.0
+
+package:
+ artifact: bin/Release/netcoreapp1.0/publish/deploy-package.zip
+
+
+functions:
+  hello:
+    handler: CsharpHandlers::AwsDotnetCsharp.Handler::Hello
+    events:
+      - http:
+          path: hello
+          method: post
